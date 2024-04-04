@@ -78,10 +78,10 @@
     default_layer {
       label = "DEF";
       bindings = <
-	  &kp Q        &kp W      &kp E         &kp R      &kp T             &kp Y        &kp U      &kp I        &kp O      &kp P           
-	  &hm LSHIFT A &hm LALT S &hm LCTRL D   &hm LGUI F &kp G             &kp H        &hm RGUI J &hm RCTRL K  &hm RALT L &hm RSHIFT BSLH 
-	  &kp Z        &kp X      &kp C         &kp V      &kp B             &kp N        &kp M      &kp SE_COMMA &kp SE_DOT &kp SE_MINUS    
-	                                        &mo LOW    &kp BSPC          &kp RET      &lt RSE SPACE
+	  &kp Q        &kp W      &kp E         &kp R       &kp T             &kp Y        &kp U      &kp I        &kp O      &kp P           
+	  &hm LSHIFT A &hm LALT S &hm LCTRL D   &hm LGUI F  &kp G             &kp H        &hm RGUI J &hm RCTRL K  &hm RALT L &hm RSHIFT BSLH 
+	  &kp Z        &kp X      &kp C         &kp V       &kp B             &kp N        &kp M      &kp SE_COMMA &kp SE_DOT &kp SE_MINUS    
+	                                        &lt LOW ESC &kp BSPC          &kp RET      &lt RSE SPACE
 	>;
     };
 
@@ -100,7 +100,7 @@
       bindings = <
 	  &kp C_VOL_UP        &kp C_BRI_UP      &kp C_PREV       &kp C_PP          &kp UNDER            &kp LS(SE_N1) &kp LS(SE_N2)      &kp LS(SE_N3)       &kp LS(SE_N4)      &qq2                 
 	  &hm LSHIFT C_VOL_DN &hm LALT C_BRI_DN &hm LCTRL C_NEXT &hm LGUI SE_TILDE &kp BSLH             &kp LS(SE_N6) &hm RGUI LS(SE_N7) &hm RCTRL LS(SE_N8) &hm RALT LS(SE_N9) &hm RSHIFT LS(SE_N0) 
-	  &kp LS(SE_STAR)     &kp PLUS          &kp LBRC         &kp RBRC          &kp RA(SE_N7)        &kp LEFT      &kp DOWN           &kp UP              &kp RIGHT          &kp LS(BSLH)         
+	  &kp LS(SE_STAR)     &kp RGUI(TAB)     &kp LBRC         &kp RBRC          &kp RA(SE_N7)        &kp LEFT      &kp DOWN           &kp UP              &kp RIGHT          &kp LS(BSLH)         
                                                                  &mo ADJ           &kp DEL              &kp RET       &kp SPACE
 	>;
     };
