@@ -9,6 +9,7 @@
 #define RSE 2
 #define ADJ 3
 #define HS  4
+#define GM  5
 
 #define APK(X) RS(RG(RC(X))) 
 
@@ -29,6 +30,9 @@
 / {
   combos {
     #include "combos.dtsi"
+  };
+  chosen {
+    zmk,matrix-transform = &five_column_transform;
   };
   behaviors {
     hm: homerow_mods {
@@ -59,6 +63,12 @@
       #binding-cells = <0>;
       bindings = <&kp RA(SE_N8)>, <&kp RA(SE_N9)>, <&kp ESC>, <&kp I>;
     };
+    ds_apl: ds_apl {
+      compatible = "zmk,behavior-macro";
+      label = "APL";
+      #binding-cells = <0>;
+      bindings = <&kp DOT>, <&kp SPACE>;
+    };
     qq1: tap_dance_1 {
       compatible = "zmk,behavior-tap-dance";
       label = "TAP_DANCE_1";
@@ -73,6 +83,20 @@
       tapping-term-ms = <200>;
       bindings = <&kp LS(SE_N5)>, <&kp LS(SE_PLUS)>;
     };
+    apl: tap_dance_apl {
+      compatible = "zmk,behavior-tap-dance";
+      label = "TAP_DANCE_APL";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp SPACE>, <&ds_apl>;
+    };
+    moto: behavior_mo_tog {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "tap-preferred";
+      tapping-term-ms = <200>;
+      bindings = <&mo>, <&apl>;
+    };
   };
   keymap {
     compatible = "zmk,keymap";
@@ -83,7 +107,7 @@
 	  &kp Q        &kp W      &kp E         &kp R       &kp T             &kp Y        &kp U      &kp I        &kp O      &kp P           
 	  &hm LSHIFT A &hm LALT S &hm LCTRL D   &hm LGUI F  &kp G             &kp H        &hm RGUI J &hm RCTRL K  &hm RALT L &hm RSHIFT BSLH 
 	  &kp Z        &kp X      &kp C         &kp V       &kp B             &kp N        &kp M      &kp SE_COMMA &kp SE_DOT &kp SE_MINUS    
-	                                        &lt LOW ESC &lt HS BSPC       &kp RET      &lt RSE SPACE
+	                                        &lt LOW ESC &lt HS BSPC       &kp RET      &moto RSE 0
 	>;
     };
 
@@ -122,8 +146,18 @@
       bindings = <
 	  &kp APK(Q) &kp APK(W) &kp APK(E) &kp APK(R) &kp APK(T)         &kp APK(Y) &kp APK(U) &kp APK(I) &kp APK(O) &kp APK(P)
 	  &kp APK(A) &kp APK(S) &kp APK(D) &kp APK(F) &kp APK(G)         &kp APK(H) &kp APK(J) &kp APK(K) &kp APK(L) &trans
-	  &kp APK(Z) &kp APK(X) &kp APK(C) &kp APK(V) &kp APK(B)         &kp APK(N) &kp APK(M) &trans     &trans     &trans
+	  &kp APK(Z) &kp APK(X) &kp APK(C) &kp APK(V) &kp APK(B)         &kp APK(N) &kp APK(M) &trans     &trans     &tog GM
 	                        &trans     &trans     &trans             &trans     &trans     &trans
+	>;
+    };
+
+    gaming_layer {
+      label = "GM";
+      bindings = <
+	  &kp Q &kp W &kp E &kp R    &kp T      &kp Y  &kp U &kp I        &kp O      &kp P           
+	  &kp A &kp S &kp D &kp F    &kp G      &kp H  &kp J &kp K        &kp L      &kp BSLH 
+	  &kp Z &kp X &kp C &kp V    &kp B      &kp N  &kp M &kp SE_COMMA &kp SE_DOT &kp SE_MINUS    
+	                    &kp BSPC &trans     &trans &trans 
 	>;
     };
   };
